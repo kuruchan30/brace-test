@@ -7,8 +7,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import com.google.gson.Gson;
 
@@ -61,6 +65,22 @@ public class Main
             }
             
             reader.close();
+            
+            System.out.println("");
+            System.out.println("TASK 3:");
+            System.out.println("");
+            
+            Set<TextObj> unique = new HashSet<TextObj>(textObjs);
+            StringBuffer str = new StringBuffer();
+            for (TextObj data : textObjs) {
+            	str.append(data.getTextdata());
+            }
+            
+            String[] splited = str.toString().split("\\s+");
+            List<String> list = Arrays.asList(splited); 
+            for (String str2 : list) {
+            	 System.out.println(str2 + ": " + Collections.frequency(list, str2));
+            }
             
         } catch (IOException ex)
         {
